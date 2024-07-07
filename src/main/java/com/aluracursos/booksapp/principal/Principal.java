@@ -57,6 +57,9 @@ public class Principal {
         System.out.println("***** El máximo de descargas es de: " + est.getMax());
         System.out.println("***** El mínimo de descargas es: " + est.getMin());
         System.out.println("***** La media de descargas es de: " + est.getAverage());
+        System.out.println("***** Cantidad de registros evaluados: " + est.getCount());
+
+
 
 
     }
