@@ -6,8 +6,10 @@ import com.aluracursos.booksapp.service.ConsumoAPI;
 import com.aluracursos.booksapp.service.ConvierteDatos;
 
 import java.util.Comparator;
+import java.util.DoubleSummaryStatistics;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Principal {
     private static final String URL_BASE = "https://gutendex.com/books/";
@@ -47,5 +49,15 @@ public class Principal {
         } else {
             System.out.println("Ooops El libro no fue encontrado");
         }
+
+        //Trabajando con estadísticas
+        DoubleSummaryStatistics est = datos.resultados().stream()
+                .filter(d -> d.numeroDeDescargas() > 0.0)
+                .collect(Collectors.summarizingDouble(DatosLibros::numeroDeDescargas));
+        System.out.println("***** El máximo de descargas es de: " + est.getMax());
+        System.out.println("***** El mínimo de descargas es: " + est.getMin());
+        System.out.println("***** La media de descargas es de: " + est.getAverage());
+
+
     }
 }
